@@ -1,9 +1,12 @@
 #Liya Tilahun
+
+#importing libraries
 library(shiny)
 library(leaflet)
 library(RColorBrewer)
 library(RCurl)
 library(RJSONIO)
+library(rsconnect)
 
 #reads in the JSON that has earthquake information depending on the selection
 #of "TimeFrame" in the UI of the app 
@@ -18,11 +21,14 @@ web<- function(name)
   else if (name == "Past 30 Days") 
     source <- getURL("https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson")
   
+  
+  #convert from a JSON data to R object
   myQuakes = fromJSON(source,simplify=TRUE, nullValue=NA)
   
   #cleaning the data
-  quakesList = myQuakes[["features"]]
+  quakesList = myQuakes[["features"]] #use subsetting to extract an element
   numRows = length(quakesList)
+  #change it to a dataframe
   quakesdf = data.frame(matrix(unlist(quakesList), nrow=numRows, byrow=T),
                         stringsAsFactors = FALSE)
   quakesdf <- quakesdf[,-1]
@@ -35,8 +41,9 @@ web<- function(name)
   return(quakesdf)
 }
 
-quakesdf<-web("Past 30 Days")
+quakesdf<-web("Past Week")
 quakesdf
+
 
 #user interface
 ui <- bootstrapPage(

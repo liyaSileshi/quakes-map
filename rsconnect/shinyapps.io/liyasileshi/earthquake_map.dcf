@@ -1,0 +1,10 @@
+name: earthquake_map
+title:
+username:
+account: liyasileshi
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2003733
+bundleId: 2929805
+url: https://liyasileshi.shinyapps.io/earthquake_map/
+when: 1585264172.63546
