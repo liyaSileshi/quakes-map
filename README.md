@@ -2,7 +2,7 @@
 
 Earthquake information map depending on the selection of a time frame
 
-Live link: 🔗 https://liyasileshi.shinyapps.io/eart…
+Live link: 🔗 https://liyasileshi.shinyapps.io/earthquake_map/
 
 ## Getting Started
 
